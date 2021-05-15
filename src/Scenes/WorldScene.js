@@ -1,3 +1,5 @@
+import { getPlayerScore } from "../Score/PlayerScore";
+
 var WorldScene = new Phaser.Class({
   Extends: Phaser.Scene,
 
@@ -31,6 +33,15 @@ var WorldScene = new Phaser.Class({
     var grass = map.createStaticLayer("Grass", tiles, 0, 0);
     var obstacles = map.createStaticLayer("Obstacles", tiles, 0, 0);
     obstacles.setCollisionByExclusion([-1]);
+
+    // Display Score
+    this.message = this.add
+      .text(60, 20, `Score: ${getPlayerScore()}`, {
+        color: "#FFFFFF",
+        fontSize: 20,
+        fontStyle: "bold",
+      })
+      .setOrigin(0.5);
 
     this.player = this.physics.add.sprite(50, 100, "player", 6);
 

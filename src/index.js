@@ -26,7 +26,7 @@ class Game extends Phaser.Game {
     this.scene.add("Battle", BattleScene);
     this.scene.add("UI", UIScene);
 
-    this.scene.start("NameInput");
+    this.scene.start("Boot");
   }
 }
 
