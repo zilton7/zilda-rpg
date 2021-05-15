@@ -1,6 +1,7 @@
 import "phaser";
 import config from "./Config/config";
 import NameInputScene from "./Scenes/NameInputScene";
+import HighScoreScene from "./Scenes/HighScoreScene";
 import BootScene from "./Scenes/BootScene";
 import WorldScene from "./Scenes/WorldScene";
 import BattleScene from "./Scenes/BattleScene";
@@ -17,6 +18,7 @@ class Game extends Phaser.Game {
     const model = new Model();
     this.globals = { model, bgMusic: null };
     this.scene.add("NameInput", NameInputScene);
+    this.scene.add("HighScore", HighScoreScene);
     this.scene.add("Boot", BootScene);
     this.scene.add("Preloader", PreloaderScene);
     this.scene.add("Title", TitleScene);

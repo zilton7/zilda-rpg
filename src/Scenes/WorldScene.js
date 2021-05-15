@@ -53,7 +53,7 @@ var WorldScene = new Phaser.Class({
       "button",
       "button",
       "Exit",
-      "PreloaderScene",
+      "HighScoreScene",
       16
     );
 
