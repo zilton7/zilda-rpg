@@ -1,4 +1,6 @@
 import { getPlayerScore, updateScoreText } from "../Score/PlayerScore";
+import config from "../Config/config";
+import Button from "../Objects/Button";
 
 let scoreText;
 
@@ -42,6 +44,18 @@ var WorldScene = new Phaser.Class({
       fill: "#fff",
     });
     updateScoreText(scoreText);
+
+    // Exit Game Button
+    this.exitGameButton = new Button(
+      this,
+      350,
+      50,
+      "blueButton1",
+      "blueButton2",
+      "Exit",
+      "PreloaderScene",
+      16
+    );
 
     this.player = this.physics.add.sprite(50, 100, "player", 6);
 
