@@ -48,10 +48,10 @@ var WorldScene = new Phaser.Class({
     // Exit Game Button
     this.exitGameButton = new Button(
       this,
-      350,
-      50,
-      "blueButton1",
-      "blueButton2",
+      420,
+      30,
+      "button",
+      "button",
       "Exit",
       "PreloaderScene",
       16
