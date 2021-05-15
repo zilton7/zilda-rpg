@@ -1,4 +1,6 @@
-import { getPlayerScore } from "../Score/PlayerScore";
+import { getPlayerScore, updateScoreText } from "../Score/PlayerScore";
+
+let scoreText;
 
 var WorldScene = new Phaser.Class({
   Extends: Phaser.Scene,
@@ -35,13 +37,11 @@ var WorldScene = new Phaser.Class({
     obstacles.setCollisionByExclusion([-1]);
 
     // Display Score
-    this.message = this.add
-      .text(60, 20, `Score: ${getPlayerScore()}`, {
-        color: "#FFFFFF",
-        fontSize: 20,
-        fontStyle: "bold",
-      })
-      .setOrigin(0.5);
+    scoreText = this.add.text(16, 16, "score: " + getPlayerScore(), {
+      fontSize: "16px",
+      fill: "#fff",
+    });
+    updateScoreText(scoreText);
 
     this.player = this.physics.add.sprite(50, 100, "player", 6);
 

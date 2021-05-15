@@ -1,3 +1,5 @@
+import { updatePlayerScore, getPlayerScore } from "../Score/PlayerScore";
+
 var Unit = new Phaser.Class({
   Extends: Phaser.GameObjects.Sprite,
 
@@ -29,6 +31,9 @@ var Unit = new Phaser.Class({
     }
   },
   takeDamage: function (damage) {
+    if (this.texture.key != "player") {
+      updatePlayerScore(damage);
+    }
     this.hp -= damage;
     if (this.hp <= 0) {
       this.hp = 0;

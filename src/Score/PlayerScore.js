@@ -1,9 +1,15 @@
 let playerScore = 0;
 
-const setPlayerScore = (inputPlayerScore) => {
-  playerScore = inputPlayerScore;
+const updatePlayerScore = (inputPlayerScore) => {
+  playerScore += inputPlayerScore;
 };
 
 const getPlayerScore = () => playerScore;
 
-export { setPlayerScore, getPlayerScore };
+const updateScoreText = (element) => {
+  setInterval(() => {
+    element.setText(`score: ${playerScore}`);
+  }, 500);
+};
+
+export { updatePlayerScore, getPlayerScore, updateScoreText };
