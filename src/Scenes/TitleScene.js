@@ -1,12 +1,12 @@
 import "phaser";
 import config from "../Config/config";
 import Button from "../Objects/Button";
+import { getPlayerName } from "../Score/PlayerName";
 
 export default class TitleScene extends Phaser.Scene {
   constructor() {
     super("Title");
   }
-
   create() {
     // Game
     this.gameButton = new Button(
@@ -48,5 +48,7 @@ export default class TitleScene extends Phaser.Scene {
       this.model.bgMusicPlaying = true;
       this.sys.game.globals.bgMusic = this.bgMusic;
     }
+
+    alert(getPlayerName());
   }
 }
