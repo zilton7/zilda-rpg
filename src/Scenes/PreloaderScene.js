@@ -26,13 +26,13 @@ export default class PreloaderScene extends Phaser.Scene {
     var progressBar = this.add.graphics();
     var progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
-    progressBox.fillRect(240, 270, 320, 50);
+    progressBox.fillRect(240, 380, 320, 50);
 
     var width = this.cameras.main.width;
     var height = this.cameras.main.height;
     var loadingText = this.make.text({
       x: width / 2,
-      y: height / 2 - 50,
+      y: height / 2 + 50,
       text: "Loading...",
       style: {
         font: "20px monospace",
@@ -43,7 +43,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     var percentText = this.make.text({
       x: width / 2,
-      y: height / 2 - 5,
+      y: height / 2,
       text: "0%",
       style: {
         font: "18px monospace",
@@ -54,7 +54,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     var assetText = this.make.text({
       x: width / 2,
-      y: height / 2 + 50,
+      y: height / 2 + 160,
       text: "",
       style: {
         font: "18px monospace",
@@ -67,8 +67,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.on("progress", function (value) {
       percentText.setText(parseInt(value * 100) + "%");
       progressBar.clear();
-      progressBar.fillStyle(0xffffff, 1);
-      progressBar.fillRect(250, 280, 300 * value, 30);
+      progressBar.fillStyle(0x1c9326, 1);
+      progressBar.fillRect(250, 390, 300 * value, 30);
     });
 
     // update file progress text
@@ -95,7 +95,6 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image("button", "./src/assets/ui/blue_button_small.png");
     this.load.image("blueButton1", "./src/assets/ui/blue_button02.png");
     this.load.image("blueButton2", "./src/assets/ui/blue_button03.png");
-    this.load.image("phaserLogo", "./src/assets/logo.png");
     this.load.image("box", "./src/assets/ui/grey_box.png");
     this.load.image("checkedBox", "./src/assets/ui/blue_boxCheckmark.png");
     this.load.audio("bgMusic", ["./src/assets/deus_ex_tempus_ii.ogg"]);
