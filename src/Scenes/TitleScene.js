@@ -8,6 +8,15 @@ export default class TitleScene extends Phaser.Scene {
     super("Title");
   }
   create() {
+    // Add background image
+    this.add.image(0, 0, "background").setOrigin(0).setScale(0.65);
+
+    // Add dark Box
+    this.add.rectangle(400, 300, 250, 550, 0x000000).setAlpha(0.75);
+
+    // add logo image
+    this.add.image(265, 30, "logo").setOrigin(0).setScale(0.5);
+
     // Game
     this.gameButton = new Button(
       this,

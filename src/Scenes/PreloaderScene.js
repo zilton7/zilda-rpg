@@ -19,8 +19,12 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
+    // Add background image
+    this.add.image(0, 0, "background").setOrigin(0).setScale(0.65);
+    // Add dark Box
+    this.add.rectangle(400, 300, 500, 450, 0x000000).setAlpha(0.75);
     // add logo image
-    this.add.image(400, 200, "logo");
+    this.add.image(400, 200, "logo").setOrigin(0.5, 0.5);
 
     // display progress bar
     var progressBar = this.add.graphics();
@@ -43,7 +47,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     var percentText = this.make.text({
       x: width / 2,
-      y: height / 2,
+      y: height / 2 + 105,
       text: "0%",
       style: {
         font: "18px monospace",
