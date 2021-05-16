@@ -1,20 +1,24 @@
 import "phaser";
 import { getPlayerName } from "../Score/PlayerName";
 import { getPlayerScore } from "../Score/PlayerScore";
-import { getHighScores } from "../Score/Api";
+import { getHighScores, submitHighScore } from "../Score/Api";
 class NameInputScene extends Phaser.Scene {
   constructor() {
     super("HighScoreScene");
   }
 
-  preload() {}
+  preload() {
+    if (getPlayerScore() > 0) {
+      submitHighScore(getPlayerName(), getPlayerScore());
+    }
+  }
 
   create() {
     // Display Player's Score
     this.message = this.add
       .text(400, 50, `${getPlayerName()}'s score: ${getPlayerScore()}`, {
         color: "#1c9326",
-        fontSize: 30,
+        fontSize: 25,
         fontStyle: "bold",
       })
       .setOrigin(0.5);
@@ -29,10 +33,10 @@ class NameInputScene extends Phaser.Scene {
 
     this.scores = this.add
       .text(400, 200, "Loading Data", {
-        wordWrap: { width: 710 },
         color: "#FFFFFF",
-        fontSize: 30,
+        fontSize: 25,
         fontStyle: "bold",
+        align: "center",
       })
       .setOrigin(0.5);
 
