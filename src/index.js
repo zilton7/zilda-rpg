@@ -1,3 +1,4 @@
+import "regenerator-runtime/runtime";
 import "phaser";
 import config from "./Config/config";
 import NameInputScene from "./Scenes/NameInputScene";
