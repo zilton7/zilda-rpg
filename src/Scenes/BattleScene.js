@@ -114,13 +114,13 @@ var BattleScene = new Phaser.Class({
       20
     );
     this.add.existing(warrior);
-    this.warriorHealthBar = this.makeBar(170, 70, 0x2ecc71);
+    this.warriorHealthBar = this.makeBar(200, 70, 0x2ecc71);
     this.setBarValue(this.warriorHealthBar, 100);
 
     // player character - mage
     mage = new PlayerCharacter(this, 250, 100, "player", 4, "Mage", 80, 8);
     this.add.existing(mage);
-    this.mageHealthBar = this.makeBar(170, 120, 0x2ecc71);
+    this.mageHealthBar = this.makeBar(200, 120, 0x2ecc71);
     this.setBarValue(this.mageHealthBar, 100);
 
     //  enemy - dragon blue
