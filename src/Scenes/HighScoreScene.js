@@ -1,4 +1,5 @@
 import "phaser";
+import Button from "../Objects/Button";
 import { getPlayerName } from "../Score/PlayerName";
 import { getPlayerScore } from "../Score/PlayerScore";
 import { getHighScores, submitHighScore } from "../Score/Api";
@@ -49,6 +50,16 @@ class NameInputScene extends Phaser.Scene {
       this.scores.setText(scoreString);
     };
     receiveHighScore();
+
+    this.menuButton = new Button(
+      this,
+      400,
+      500,
+      "blueButton1",
+      "blueButton2",
+      "Menu",
+      "Title"
+    );
   }
 }
 

@@ -1,5 +1,4 @@
 import { getPlayerScore, updateScoreText } from "../Score/PlayerScore";
-import config from "../Config/config";
 import Button from "../Objects/Button";
 
 let scoreText;

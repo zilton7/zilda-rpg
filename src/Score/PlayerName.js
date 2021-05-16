@@ -1,8 +1,12 @@
 let playerName = "Guest";
 
-const setPlayerName = (inputPlayerName) => {
-  playerName = inputPlayerName;
-  return `Player Name is: ${playerName}`;
+const setPlayerName = (str) => {
+  console.log(str);
+  if (str === "") {
+    playerName = "Guest";
+  } else {
+    playerName = str;
+  }
 };
 
 const getPlayerName = () => playerName;
