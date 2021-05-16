@@ -12,21 +12,39 @@ class NameInputScene extends Phaser.Scene {
   create() {
     // Display Player's Score
     this.message = this.add
-      .text(400, 100, `${getPlayerName()}'s score: ${getPlayerScore()}`, {
-        color: "#FFFFFF",
+      .text(400, 50, `${getPlayerName()}'s score: ${getPlayerScore()}`, {
+        color: "#1c9326",
         fontSize: 30,
         fontStyle: "bold",
       })
       .setOrigin(0.5);
     // Display High Scores
     this.message = this.add
-      .text(400, 50, "High Scores", {
+      .text(400, 100, "High Scores", {
         color: "#FFFFFF",
         fontSize: 30,
         fontStyle: "bold",
       })
       .setOrigin(0.5);
-    console.log(getHighScores());
+
+    this.scores = this.add
+      .text(400, 200, "Loading Data", {
+        wordWrap: { width: 710 },
+        color: "#FFFFFF",
+        fontSize: 30,
+        fontStyle: "bold",
+      })
+      .setOrigin(0.5);
+
+    const receiveHighScore = async () => {
+      const leaderBoard = await getHighScores();
+      let scoreString = "";
+      leaderBoard.forEach((score) => {
+        scoreString += `${score[0]} - ${score[1]}\n`;
+      });
+      this.scores.setText(scoreString);
+    };
+    receiveHighScore();
   }
 }
 
