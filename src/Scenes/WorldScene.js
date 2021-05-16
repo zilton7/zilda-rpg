@@ -56,7 +56,7 @@ var WorldScene = new Phaser.Class({
       16
     );
 
-    this.player = this.physics.add.sprite(50, 100, "player", 6);
+    this.player = this.physics.add.sprite(50, 100, "player", 6).setScale(2);
 
     this.physics.world.bounds.width = map.widthInPixels;
     this.physics.world.bounds.height = map.heightInPixels;
