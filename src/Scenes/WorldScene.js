@@ -24,8 +24,8 @@ var WorldScene = new Phaser.Class({
     });
 
     // enemies
-    this.load.image("dragonblue", "../src/assets/dragonblue.png");
-    this.load.image("dragonorrange", "../src/assets/dragonorrange.png");
+    this.load.image("dragonBlue", "../src/assets/dragon-blue.png");
+    this.load.image("dragonOrange", "../src/assets/dragon-orange.png");
   },
   create: function () {
     // create your world here
