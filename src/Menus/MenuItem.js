@@ -1,23 +1,25 @@
-var MenuItem = new Phaser.Class({
+/* eslint-disable no-undef */
+
+const MenuItem = new Phaser.Class({
   Extends: Phaser.GameObjects.Text,
 
   initialize: function MenuItem(x, y, text, scene) {
     Phaser.GameObjects.Text.call(this, scene, x, y, text, {
-      color: "#ffffff",
-      align: "left",
+      color: '#ffffff',
+      align: 'left',
       fontSize: 15,
     });
   },
 
-  select: function () {
-    this.setColor("#f8ff38");
+  select() {
+    this.setColor('#f8ff38');
   },
 
-  deselect: function () {
-    this.setColor("#ffffff");
+  deselect() {
+    this.setColor('#ffffff');
   },
   // when the associated enemy or player unit is killed
-  unitKilled: function () {
+  unitKilled() {
     this.active = false;
     this.visible = false;
   },

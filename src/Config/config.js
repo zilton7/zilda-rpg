@@ -1,8 +1,9 @@
-import "phaser";
+/* eslint-disable no-undef */
+import 'phaser';
 
 export default {
   type: Phaser.AUTO,
-  parent: "phaser-example",
+  parent: 'phaser-example',
   width: 800,
   height: 600,
   pixelArt: true,
@@ -10,7 +11,7 @@ export default {
     createContainer: true,
   },
   physics: {
-    default: "arcade",
+    default: 'arcade',
     arcade: {
       gravity: { y: 0 },
       debug: true,

@@ -1,8 +1,8 @@
-let playerName = "Guest";
+let playerName = 'Guest';
 
 const setPlayerName = (str) => {
-  if (str === "") {
-    playerName = "Guest";
+  if (str === '') {
+    playerName = 'Guest';
   } else {
     playerName = str;
   }

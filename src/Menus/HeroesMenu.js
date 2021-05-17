@@ -1,6 +1,8 @@
-import Menu from "./Menu";
+/* eslint-disable no-undef */
 
-var HeroesMenu = new Phaser.Class({
+import Menu from './Menu';
+
+const HeroesMenu = new Phaser.Class({
   Extends: Menu,
 
   initialize: function HeroesMenu(x, y, scene) {

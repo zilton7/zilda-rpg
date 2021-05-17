@@ -1,14 +1,16 @@
-import Menu from "./Menu";
+/* eslint-disable no-undef */
 
-var ActionsMenu = new Phaser.Class({
+import Menu from './Menu';
+
+const ActionsMenu = new Phaser.Class({
   Extends: Menu,
 
   initialize: function ActionsMenu(x, y, scene) {
     Menu.call(this, x, y, scene);
-    this.addMenuItem("Attack");
+    this.addMenuItem('Attack');
   },
-  confirm: function () {
-    this.scene.events.emit("SelectedAction");
+  confirm() {
+    this.scene.events.emit('SelectedAction');
   },
 });
 

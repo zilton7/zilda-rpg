@@ -1,30 +1,32 @@
-import "phaser";
-import config from "../Config/config";
+/* eslint-disable no-undef,  class-methods-use-this, no-unused-expressions, func-names */
+
+import 'phaser';
+import config from '../Config/config';
 
 export default class CreditsScene extends Phaser.Scene {
   constructor() {
-    super("Credits");
+    super('Credits');
   }
 
   preload() {}
 
   create() {
-    this.creditsText = this.add.text(0, 0, "Credits", {
-      fontSize: "32px",
-      fill: "#fff",
+    this.creditsText = this.add.text(0, 0, 'Credits', {
+      fontSize: '32px',
+      fill: '#fff',
     });
-    this.madeByText = this.add.text(0, 0, "Created By: Zil Norvilis", {
-      fontSize: "26px",
-      fill: "#fff",
+    this.madeByText = this.add.text(0, 0, 'Created By: Zil Norvilis', {
+      fontSize: '26px',
+      fill: '#fff',
     });
 
     this.creditsTween = this.tweens.add({
       targets: this.creditsText,
       y: -100,
-      ease: "Power1",
+      ease: 'Power1',
       duration: 3000,
       delay: 1000,
-      onComplete: function () {
+      onComplete() {
         this.destroy;
       },
     });
@@ -32,12 +34,12 @@ export default class CreditsScene extends Phaser.Scene {
     this.madeByTween = this.tweens.add({
       targets: this.madeByText,
       y: -300,
-      ease: "Power1",
+      ease: 'Power1',
       duration: 8000,
       delay: 1000,
       onComplete: function () {
         this.madeByTween.destroy;
-        this.scene.start("Title");
+        this.scene.start('Title');
       }.bind(this),
     });
 
@@ -45,7 +47,7 @@ export default class CreditsScene extends Phaser.Scene {
       config.width / 2,
       config.height / 2,
       config.width,
-      config.height
+      config.height,
     );
 
     Phaser.Display.Align.In.Center(this.creditsText, this.zone);

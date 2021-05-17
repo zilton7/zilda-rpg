@@ -1,6 +1,8 @@
-import { updatePlayerScore, getPlayerScore } from "../Score/PlayerScore";
+/* eslint-disable no-undef, no-multi-assign */
 
-var Unit = new Phaser.Class({
+import { updatePlayerScore } from '../Score/PlayerScore';
+
+const Unit = new Phaser.Class({
   Extends: Phaser.GameObjects.Sprite,
 
   initialize: function Unit(scene, x, y, texture, frame, type, hp, damage) {
@@ -12,26 +14,21 @@ var Unit = new Phaser.Class({
     this.menuItem = null;
   },
   // we will use this to notify the menu item when the unit is dead
-  setMenuItem: function (item) {
+  setMenuItem(item) {
     this.menuItem = item;
   },
   // attack the target unit
-  attack: function (target) {
+  attack(target) {
     if (target.living) {
       target.takeDamage(this.damage);
       this.scene.events.emit(
-        "Message",
-        this.type +
-          " attacks " +
-          target.type +
-          " for " +
-          this.damage +
-          " damage"
+        'Message',
+        `${this.type} attacks ${target.type} for ${this.damage} damage`,
       );
     }
   },
-  takeDamage: function (damage) {
-    if (this.texture.key != "player") {
+  takeDamage(damage) {
+    if (this.texture.key !== 'player') {
       updatePlayerScore(damage);
     }
     this.hp -= damage;

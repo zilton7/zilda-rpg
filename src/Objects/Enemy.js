@@ -1,6 +1,8 @@
-import Unit from "./Unit";
+/* eslint-disable no-undef */
 
-var Enemy = new Phaser.Class({
+import Unit from './Unit';
+
+const Enemy = new Phaser.Class({
   Extends: Unit,
 
   initialize: function Enemy(scene, x, y, texture, frame, type, hp, damage) {

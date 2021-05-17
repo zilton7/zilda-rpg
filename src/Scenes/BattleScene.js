@@ -1,8 +1,8 @@
-import PlayerCharacter from "../Objects/PlayerCharacter";
-import Enemy from "../Objects/Enemy";
-import Menu from "../Menus/Menu";
-import { getPlayerScore, updateScoreText } from "../Score/PlayerScore";
-import config from "../Config/config";
+/* eslint-disable no-undef */
+
+import PlayerCharacter from '../Objects/PlayerCharacter';
+import Enemy from '../Objects/Enemy';
+import { getPlayerScore, updateScoreText } from '../Score/PlayerScore';
 
 let scoreText;
 let warrior;
@@ -10,24 +10,24 @@ let mage;
 let dragonBlue;
 let dragonOrange;
 
-var BattleScene = new Phaser.Class({
+const BattleScene = new Phaser.Class({
   Extends: Phaser.Scene,
 
-  preload: function () {
+  preload() {
     // Add background image
-    this.load.image("battleBg", "assets/battle_bg.jpg");
+    this.load.image('battleBg', 'assets/battle_bg.jpg');
   },
 
   initialize: function BattleScene() {
-    Phaser.Scene.call(this, { key: "BattleScene" });
+    Phaser.Scene.call(this, { key: 'BattleScene' });
   },
-  create: function () {
+  create() {
     // Add background
-    this.add.image(0, 0, "battleBg").setOrigin(0).setScale(0.52).setY(50);
+    this.add.image(0, 0, 'battleBg').setOrigin(0).setScale(0.52).setY(50);
     // Display Score
-    scoreText = this.add.text(16, 16, "score: " + getPlayerScore(), {
-      fontSize: "16px",
-      fill: "#fff",
+    scoreText = this.add.text(16, 16, `score: ${getPlayerScore()}`, {
+      fontSize: '16px',
+      fill: '#fff',
     });
     updateScoreText(scoreText);
 
@@ -36,10 +36,10 @@ var BattleScene = new Phaser.Class({
 
     this.startBattle();
     // on wake event we call startBattle too
-    this.sys.events.on("wake", this.startBattle, this);
+    this.sys.events.on('wake', this.startBattle, this);
   },
 
-  nextTurn: function () {
+  nextTurn() {
     // if we have victory or game over
     if (this.checkEndBattle()) {
       this.endBattle();
@@ -53,7 +53,7 @@ var BattleScene = new Phaser.Class({
       this.setHealthBarValue(this.dragonOrangeHealthBar, dragonOrange.hp);
 
       // currently active unit
-      this.index++;
+      this.index += 1;
       // if there are no more units, we start again from the first one
       if (this.index >= this.units.length) {
         this.index = 0;
@@ -62,11 +62,11 @@ var BattleScene = new Phaser.Class({
     // if its player hero
     if (this.units[this.index] instanceof PlayerCharacter) {
       // we need the player to select action and then enemy
-      this.events.emit("PlayerSelect", this.index);
+      this.events.emit('PlayerSelect', this.index);
     } else {
       // else if its enemy unit
       // pick random living hero to be attacked
-      var r;
+      let r;
       do {
         r = Math.floor(Math.random() * this.heroes.length);
       } while (!this.heroes[r].living);
@@ -81,53 +81,53 @@ var BattleScene = new Phaser.Class({
     }
   },
 
-  checkEndBattle: function () {
-    var victory = true;
+  checkEndBattle() {
+    let victory = true;
     // if all enemies are dead we have victory
-    for (var i = 0; i < this.enemies.length; i++) {
+    for (let i = 0; i < this.enemies.length; i += 1) {
       if (this.enemies[i].living) victory = false;
     }
-    var gameOver = true;
+    let gameOver = true;
     // if all heroes are dead we have game over
-    for (var i = 0; i < this.heroes.length; i++) {
+    for (let i = 0; i < this.heroes.length; i += 1) {
       if (this.heroes[i].living) gameOver = false;
     }
     return victory || gameOver;
   },
 
-  endBattle: function () {
+  endBattle() {
     // clear state, remove sprites
     this.heroes.length = 0;
     this.enemies.length = 0;
-    for (var i = 0; i < this.units.length; i++) {
+    for (let i = 0; i < this.units.length; i += 1) {
       // link item
       this.units[i].destroy();
     }
     this.units.length = 0;
     // sleep the UI
-    this.scene.sleep("UIScene");
+    this.scene.sleep('UIScene');
     // return to WorldScene and sleep current BattleScene
-    this.scene.switch("WorldScene");
+    this.scene.switch('WorldScene');
   },
 
-  startBattle: function () {
+  startBattle() {
     // player character - warrior
     warrior = new PlayerCharacter(
       this,
       530,
       200,
-      "player",
+      'player',
       1,
-      "Warrior",
+      'Warrior',
       100,
-      20
+      20,
     );
     this.add.existing(warrior);
     this.warriorHealthBar = this.makeHealthBar(480, 220, 0x2ecc71);
     this.setHealthBarValue(this.warriorHealthBar, 100);
 
     // player character - mage
-    mage = new PlayerCharacter(this, 530, 250, "player", 4, "Mage", 80, 8);
+    mage = new PlayerCharacter(this, 530, 250, 'player', 4, 'Mage', 80, 8);
     this.add.existing(mage);
     this.mageHealthBar = this.makeHealthBar(480, 270, 0x2ecc71);
     this.setHealthBarValue(this.mageHealthBar, 100);
@@ -137,11 +137,11 @@ var BattleScene = new Phaser.Class({
       this,
       290,
       200,
-      "dragonBlue",
+      'dragonBlue',
       null,
-      "BlueDrag",
+      'BlueDrag',
       50,
-      3
+      3,
     );
     this.add.existing(dragonBlue);
     this.dragonBlueHealthBar = this.makeHealthBar(260, 220, 0x2ecc71);
@@ -152,11 +152,11 @@ var BattleScene = new Phaser.Class({
       this,
       290,
       250,
-      "dragonOrange",
+      'dragonOrange',
       null,
-      "OrangeDrag",
+      'OrangeDrag',
       50,
-      3
+      3,
     );
     this.add.existing(dragonOrange);
     this.dragonOrangeHealthBar = this.makeHealthBar(260, 270, 0x2ecc71);
@@ -171,11 +171,11 @@ var BattleScene = new Phaser.Class({
 
     this.index = -1; // currently active unit
 
-    this.scene.run("UIScene");
+    this.scene.run('UIScene');
   },
 
-  receivePlayerSelection: function (action, target) {
-    if (action == "attack") {
+  receivePlayerSelection(action, target) {
+    if (action === 'attack') {
       this.units[this.index].attack(this.enemies[target]);
     }
     this.time.addEvent({
@@ -185,25 +185,25 @@ var BattleScene = new Phaser.Class({
     });
   },
 
-  makeHealthBar: function (x, y, color) {
-    //draw the bar
-    let bar = this.add.graphics();
+  makeHealthBar(x, y, color) {
+    // draw the bar
+    const bar = this.add.graphics();
 
-    //color the bar
+    // color the bar
     bar.fillStyle(color, 1);
 
-    //fill the bar with a rectangle
+    // fill the bar with a rectangle
     bar.fillRect(0, 0, 100, 10);
 
-    //position the bar
+    // position the bar
     bar.x = x;
     bar.y = y;
 
-    //return the bar
+    // return the bar
     return bar;
   },
-  setHealthBarValue: function (bar, percentage) {
-    //scale the bar
+  setHealthBarValue(bar, percentage) {
+    // scale the bar
     bar.scaleX = percentage / 100;
   },
 });

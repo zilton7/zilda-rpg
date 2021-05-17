@@ -1,17 +1,19 @@
-import HeroesMenu from "../Menus/HeroesMenu";
-import EnemiesMenu from "../Menus/EnemiesMenu";
-import ActionsMenu from "../Menus/ActionsMenu";
-import Message from "../Message/Message";
-import config from "../Config/config";
+/* eslint-disable no-undef, no-empty */
 
-var UIScene = new Phaser.Class({
+import HeroesMenu from '../Menus/HeroesMenu';
+import EnemiesMenu from '../Menus/EnemiesMenu';
+import ActionsMenu from '../Menus/ActionsMenu';
+import Message from '../Message/Message';
+import config from '../Config/config';
+
+const UIScene = new Phaser.Class({
   Extends: Phaser.Scene,
 
   initialize: function UIScene() {
-    Phaser.Scene.call(this, { key: "UIScene" });
+    Phaser.Scene.call(this, { key: 'UIScene' });
   },
 
-  create: function () {
+  create() {
     // draw some background for the menu
     this.graphics = this.add.graphics();
     this.graphics.fillStyle(0x1c9326, 1);
@@ -42,28 +44,28 @@ var UIScene = new Phaser.Class({
     this.menus.add(this.enemiesMenu);
 
     // Group up menu elements
-    let group = this.add.group(config);
+    const group = this.add.group(config);
     group.add(this.graphics);
     group.add(this.menus);
     group.setX(250).setY(150);
 
-    this.battleScene = this.scene.get("BattleScene");
+    this.battleScene = this.scene.get('BattleScene');
 
     // listen for keyboard events
-    this.input.keyboard.on("keydown", this.onKeyInput, this);
+    this.input.keyboard.on('keydown', this.onKeyInput, this);
 
     // when its player cunit turn to move
-    this.battleScene.events.on("PlayerSelect", this.onPlayerSelect, this);
+    this.battleScene.events.on('PlayerSelect', this.onPlayerSelect, this);
 
     // when the action on the menu is selected
     // for now we have only one action so we dont send and action id
-    this.events.on("SelectedAction", this.onSelectedAction, this);
+    this.events.on('SelectedAction', this.onSelectedAction, this);
 
     // an enemy is selected
-    this.events.on("Enemy", this.onEnemy, this);
+    this.events.on('Enemy', this.onEnemy, this);
 
     // when the scene receives wake event
-    this.sys.events.on("wake", this.createMenu, this);
+    this.sys.events.on('wake', this.createMenu, this);
 
     // the message describing the current action
     this.message = new Message(this, this.battleScene.events);
@@ -72,7 +74,7 @@ var UIScene = new Phaser.Class({
     this.createMenu();
   },
 
-  createMenu: function () {
+  createMenu() {
     // map hero menu items to heroes
     this.remapHeroes();
     // map enemies menu items to enemies
@@ -81,44 +83,44 @@ var UIScene = new Phaser.Class({
     this.battleScene.nextTurn();
   },
 
-  onEnemy: function (index) {
+  onEnemy(index) {
     this.heroesMenu.deselect();
     this.actionsMenu.deselect();
     this.enemiesMenu.deselect();
     this.currentMenu = null;
-    this.battleScene.receivePlayerSelection("attack", index);
+    this.battleScene.receivePlayerSelection('attack', index);
   },
 
-  onSelectedAction: function () {
+  onSelectedAction() {
     this.currentMenu = this.enemiesMenu;
     this.enemiesMenu.select(0);
   },
 
-  onPlayerSelect: function (id) {
+  onPlayerSelect(id) {
     this.heroesMenu.select(id);
     this.actionsMenu.select(0);
     this.currentMenu = this.actionsMenu;
   },
 
-  onKeyInput: function (event) {
+  onKeyInput(event) {
     if (this.currentMenu && this.currentMenu.selected) {
-      if (event.code === "ArrowUp") {
+      if (event.code === 'ArrowUp') {
         this.currentMenu.moveSelectionUp();
-      } else if (event.code === "ArrowDown") {
+      } else if (event.code === 'ArrowDown') {
         this.currentMenu.moveSelectionDown();
-      } else if (event.code === "ArrowRight" || event.code === "Shift") {
-      } else if (event.code === "Space" || event.code === "ArrowLeft") {
+      } else if (event.code === 'ArrowRight' || event.code === 'Shift') {
+      } else if (event.code === 'Space' || event.code === 'ArrowLeft') {
         this.currentMenu.confirm();
       }
     }
   },
 
-  remapHeroes: function () {
-    var heroes = this.battleScene.heroes;
+  remapHeroes() {
+    const { heroes } = this.battleScene;
     this.heroesMenu.remap(heroes);
   },
-  remapEnemies: function () {
-    var enemies = this.battleScene.enemies;
+  remapEnemies() {
+    const { enemies } = this.battleScene;
     this.enemiesMenu.remap(enemies);
   },
 });

@@ -1,6 +1,8 @@
-import Unit from "./Unit";
+/* eslint-disable no-undef */
 
-var PlayerCharacter = new Phaser.Class({
+import Unit from './Unit';
+
+const PlayerCharacter = new Phaser.Class({
   Extends: Unit,
 
   initialize: function PlayerCharacter(
@@ -11,7 +13,7 @@ var PlayerCharacter = new Phaser.Class({
     frame,
     type,
     hp,
-    damage
+    damage,
   ) {
     Unit.call(this, scene, x, y, texture, frame, type, hp, damage);
     this.flipX = true;
