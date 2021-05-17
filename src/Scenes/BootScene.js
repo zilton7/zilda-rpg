@@ -6,9 +6,9 @@ export default class BootScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("logo", "./src/assets/zilda_logo.png");
+    this.load.image("logo", "assets/zilda_logo.png");
     //add background image for the scene
-    this.load.image("background", "./src/assets/background.jpg");
+    this.load.image("background", "assets/background.jpg");
   }
 
   create() {
