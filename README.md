@@ -1,16 +1,18 @@
-# Project Name
+# Zilda - RPG Game
 
 ![screenshot](./app_screenshot.png)
 
-Description goes here
+In this project, I have built a RPG game using Phaser 3 Framework. This project's main goal was to learn completely new technology and implement a fully working game in 5 work days, using best JavaScript practices.
 
 ## Built With
 
 - JavaScript
+- Phaser 3
+- Webpack
 
 ## Live Demo
 
-[Live demo](https://)
+[Live demo]https://zilton7.github.io/zilda-rpg/)
 
 ## Getting Started
 
