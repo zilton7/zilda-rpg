@@ -13,18 +13,26 @@ let dragonOrange;
 var BattleScene = new Phaser.Class({
   Extends: Phaser.Scene,
 
+  preload: function () {
+    // Add background image
+    this.load.image("battleBg", "../src/assets/battle_bg.jpg");
+  },
+
   initialize: function BattleScene() {
     Phaser.Scene.call(this, { key: "BattleScene" });
   },
   create: function () {
-    // change the background to green
-    this.cameras.main.setBackgroundColor("rgba(0, 200, 0, 0.5)");
+    // Add background
+    this.add.image(0, 0, "battleBg").setOrigin(0).setScale(0.52).setY(50);
     // Display Score
     scoreText = this.add.text(16, 16, "score: " + getPlayerScore(), {
       fontSize: "16px",
       fill: "#fff",
     });
     updateScoreText(scoreText);
+
+    // Add dark Box
+    this.add.rectangle(410, 300, 400, 350, 0x000000).setAlpha(0.9);
 
     this.startBattle();
     // on wake event we call startBattle too

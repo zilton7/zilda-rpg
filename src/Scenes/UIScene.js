@@ -14,20 +14,23 @@ var UIScene = new Phaser.Class({
   create: function () {
     // draw some background for the menu
     this.graphics = this.add.graphics();
+    this.graphics.fillStyle(0x1c9326, 1);
     this.graphics.lineStyle(1, 0xffffff);
-    this.graphics.fillStyle(0x031f4c, 1);
+
     this.graphics.strokeRect(2, 150, 90, 100);
     this.graphics.fillRect(2, 150, 90, 100);
+
     this.graphics.strokeRect(95, 150, 90, 100);
     this.graphics.fillRect(95, 150, 90, 100);
+
     this.graphics.strokeRect(188, 150, 130, 100);
     this.graphics.fillRect(188, 150, 130, 100);
 
     // basic container to hold all menus
     this.menus = this.add.container();
 
-    this.heroesMenu = new HeroesMenu(195, 153, this);
-    this.actionsMenu = new ActionsMenu(100, 153, this);
+    this.heroesMenu = new HeroesMenu(220, 153, this);
+    this.actionsMenu = new ActionsMenu(120, 153, this);
     this.enemiesMenu = new EnemiesMenu(8, 153, this);
 
     // the currently selected menu
@@ -42,7 +45,7 @@ var UIScene = new Phaser.Class({
     let group = this.add.group(config);
     group.add(this.graphics);
     group.add(this.menus);
-    group.setX(250).setY(200);
+    group.setX(250).setY(150);
 
     this.battleScene = this.scene.get("BattleScene");
 
