@@ -37,8 +37,10 @@ var WorldScene = new Phaser.Class({
     var obstacles = map.createStaticLayer("Obstacles", tiles, 0, 0);
     obstacles.setCollisionByExclusion([-1]);
 
+    // Add top menu bar
+    let topBar = this.add.rectangle(20, 10, 1600, 35, 0x000000).setAlpha(1);
     // Display Score
-    scoreText = this.add.text(16, 16, "score: " + getPlayerScore(), {
+    scoreText = this.add.text(16, 5, "score: " + getPlayerScore(), {
       fontSize: "16px",
       fill: "#fff",
     });
@@ -47,8 +49,8 @@ var WorldScene = new Phaser.Class({
     // Exit Game Button
     this.exitGameButton = new Button(
       this,
-      420,
-      30,
+      740,
+      13,
       "button",
       "button",
       "Exit",
@@ -111,7 +113,7 @@ var WorldScene = new Phaser.Class({
     });
     for (var i = 0; i < 30; i++) {
       var x = Phaser.Math.RND.between(0, this.physics.world.bounds.width);
-      var y = Phaser.Math.RND.between(0, this.physics.world.bounds.height);
+      var y = Phaser.Math.RND.between(35, this.physics.world.bounds.height);
       // parameters are x, y, width, height
       this.spawns.create(x, y, 20, 20);
     }
