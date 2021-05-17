@@ -15,17 +15,17 @@ var WorldScene = new Phaser.Class({
     this.load.image("tiles", "assets/map/spritesheet.png");
 
     // map in json format
-    this.load.tilemapTiledJSON("map", "/assets/map/map.json");
+    this.load.tilemapTiledJSON("map", "assets/map/map.json");
 
     // our two characters
-    this.load.spritesheet("player", "/assets/RPG_assets.png", {
+    this.load.spritesheet("player", "assets/RPG_assets.png", {
       frameWidth: 16,
       frameHeight: 16,
     });
 
     // enemies
-    this.load.image("dragonBlue", "/assets/dragon-blue.png");
-    this.load.image("dragonOrange", "/assets/dragon-orange.png");
+    this.load.image("dragonBlue", "assets/dragon-blue.png");
+    this.load.image("dragonOrange", "assets/dragon-orange.png");
   },
   create: function () {
     // create your world here
