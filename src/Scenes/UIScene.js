@@ -2,6 +2,7 @@ import HeroesMenu from "../Menus/HeroesMenu";
 import EnemiesMenu from "../Menus/EnemiesMenu";
 import ActionsMenu from "../Menus/ActionsMenu";
 import Message from "../Message/Message";
+import config from "../Config/config";
 
 var UIScene = new Phaser.Class({
   Extends: Phaser.Scene,
@@ -36,6 +37,12 @@ var UIScene = new Phaser.Class({
     this.menus.add(this.heroesMenu);
     this.menus.add(this.actionsMenu);
     this.menus.add(this.enemiesMenu);
+
+    // Group up menu elements
+    let group = this.add.group(config);
+    group.add(this.graphics);
+    group.add(this.menus);
+    group.setX(250).setY(200);
 
     this.battleScene = this.scene.get("BattleScene");
 

@@ -2,6 +2,7 @@ import PlayerCharacter from "../Objects/PlayerCharacter";
 import Enemy from "../Objects/Enemy";
 import Menu from "../Menus/Menu";
 import { getPlayerScore, updateScoreText } from "../Score/PlayerScore";
+import config from "../Config/config";
 
 let scoreText;
 let warrior;
@@ -38,10 +39,10 @@ var BattleScene = new Phaser.Class({
     }
     do {
       // Update health bars
-      this.setBarValue(this.warriorHealthBar, warrior.hp);
-      this.setBarValue(this.mageHealthBar, mage.hp);
-      this.setBarValue(this.dragonBlueHealthBar, dragonBlue.hp);
-      this.setBarValue(this.dragonOrangeHealthBar, dragonOrange.hp);
+      this.setHealthBarValue(this.warriorHealthBar, warrior.hp);
+      this.setHealthBarValue(this.mageHealthBar, mage.hp);
+      this.setHealthBarValue(this.dragonBlueHealthBar, dragonBlue.hp);
+      this.setHealthBarValue(this.dragonOrangeHealthBar, dragonOrange.hp);
 
       // currently active unit
       this.index++;
@@ -105,8 +106,8 @@ var BattleScene = new Phaser.Class({
     // player character - warrior
     warrior = new PlayerCharacter(
       this,
-      250,
-      50,
+      530,
+      200,
       "player",
       1,
       "Warrior",
@@ -114,26 +115,35 @@ var BattleScene = new Phaser.Class({
       20
     );
     this.add.existing(warrior);
-    this.warriorHealthBar = this.makeBar(200, 70, 0x2ecc71);
-    this.setBarValue(this.warriorHealthBar, 100);
+    this.warriorHealthBar = this.makeHealthBar(480, 220, 0x2ecc71);
+    this.setHealthBarValue(this.warriorHealthBar, 100);
 
     // player character - mage
-    mage = new PlayerCharacter(this, 250, 100, "player", 4, "Mage", 80, 8);
+    mage = new PlayerCharacter(this, 530, 250, "player", 4, "Mage", 80, 8);
     this.add.existing(mage);
-    this.mageHealthBar = this.makeBar(200, 120, 0x2ecc71);
-    this.setBarValue(this.mageHealthBar, 100);
+    this.mageHealthBar = this.makeHealthBar(480, 270, 0x2ecc71);
+    this.setHealthBarValue(this.mageHealthBar, 100);
 
     //  enemy - dragon blue
-    dragonBlue = new Enemy(this, 50, 50, "dragonBlue", null, "BlueDrag", 50, 3);
+    dragonBlue = new Enemy(
+      this,
+      290,
+      200,
+      "dragonBlue",
+      null,
+      "BlueDrag",
+      50,
+      3
+    );
     this.add.existing(dragonBlue);
-    this.dragonBlueHealthBar = this.makeBar(20, 70, 0x2ecc71);
-    this.setBarValue(this.dragonBlueHealthBar, 100);
+    this.dragonBlueHealthBar = this.makeHealthBar(260, 220, 0x2ecc71);
+    this.setHealthBarValue(this.dragonBlueHealthBar, 100);
 
     //  enemy - dragon orange
     dragonOrange = new Enemy(
       this,
-      50,
-      100,
+      290,
+      250,
       "dragonOrange",
       null,
       "OrangeDrag",
@@ -141,8 +151,8 @@ var BattleScene = new Phaser.Class({
       3
     );
     this.add.existing(dragonOrange);
-    this.dragonOrangeHealthBar = this.makeBar(20, 120, 0x2ecc71);
-    this.setBarValue(this.dragonOrangeHealthBar, 100);
+    this.dragonOrangeHealthBar = this.makeHealthBar(260, 270, 0x2ecc71);
+    this.setHealthBarValue(this.dragonOrangeHealthBar, 100);
 
     // array with heroes
     this.heroes = [warrior, mage];
@@ -167,7 +177,7 @@ var BattleScene = new Phaser.Class({
     });
   },
 
-  makeBar: function (x, y, color) {
+  makeHealthBar: function (x, y, color) {
     //draw the bar
     let bar = this.add.graphics();
 
@@ -184,7 +194,7 @@ var BattleScene = new Phaser.Class({
     //return the bar
     return bar;
   },
-  setBarValue: function (bar, percentage) {
+  setHealthBarValue: function (bar, percentage) {
     //scale the bar
     bar.scaleX = percentage / 100;
   },

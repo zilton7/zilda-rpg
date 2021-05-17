@@ -1,15 +1,17 @@
+import config from "../Config/config";
+
 var Message = new Phaser.Class({
   Extends: Phaser.GameObjects.Container,
 
   initialize: function Message(scene, events) {
-    Phaser.GameObjects.Container.call(this, scene, 160, 30);
+    Phaser.GameObjects.Container.call(this, scene, 400, 150);
     var graphics = this.scene.add.graphics();
     this.add(graphics);
     graphics.lineStyle(1, 0xffffff, 0.8);
     graphics.fillStyle(0x031f4c, 0.3);
-    graphics.strokeRect(-90, -15, 180, 30);
-    graphics.fillRect(-90, -15, 180, 30);
-    this.text = new Phaser.GameObjects.Text(scene, 0, 0, "", {
+    graphics.strokeRect(-90, -15, 180, 50);
+    graphics.fillRect(-90, -15, 180, 50);
+    this.text = new Phaser.GameObjects.Text(scene, 0, 10, "", {
       color: "#ffffff",
       align: "center",
       fontSize: 13,
