@@ -33,7 +33,7 @@ class NameInputScene extends Phaser.Scene {
       .setOrigin(0.5);
 
     this.scores = this.add
-      .text(400, 200, "Loading Data", {
+      .text(400, 300, "Loading Data", {
         color: "#FFFFFF",
         fontSize: 25,
         fontStyle: "bold",
@@ -44,7 +44,7 @@ class NameInputScene extends Phaser.Scene {
     const receiveHighScore = async () => {
       const leaderBoard = await getHighScores();
       let scoreString = "";
-      leaderBoard.forEach((score) => {
+      leaderBoard.slice(0, 11).forEach((score) => {
         scoreString += `${score[0]} - ${score[1]}\n`;
       });
       this.scores.setText(scoreString);
