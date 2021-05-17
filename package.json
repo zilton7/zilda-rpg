@@ -1,9 +1,10 @@
 {
-  "name": "Zilda-RPG-Game",
-  "version": "1.0",
+  "name": "zilda-rpg-game",
+  "version": "1.0.0",
   "description": "A Simple RPG Game made with Phaser 3",
   "main": "src/index.js",
   "scripts": {
+    "test": "jest",
     "build": "webpack --config webpack/prod.js ",
     "start": "webpack-dev-server --config webpack/base.js --open"
   },
@@ -33,6 +34,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "jest": "^26.6.3",
     "phaser": "^3.50.0"
   }
 }
