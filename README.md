@@ -36,7 +36,7 @@ reach particular places you will engage into the battle with dragons.
 When in battle, user arrow keys to choose your characters attack and
 try to defeat the enemies.
 
-### About The Game
+## About The Game
 
 The Legendary Zilda is a turn-based role play game (RPG). The objective of this game is to remind people of old classical RPG games from the 90's and 00's. Game consists two different playing scenes Battle and World. To make it competitive the player game points are recorded and stored online, everybody can get to the top of the rankings if they put enough effort and time.
 
@@ -55,7 +55,7 @@ Also there are player's score available to see in the top bar in both of the sce
 Player has 2 main characters, warrior and mage, with whom battled are fought
 
 Enemies are 2 dragoons red and blue.
-### Setup
+## Setup
 
 To clone this repository run:
 
@@ -76,8 +76,10 @@ The browser window should popup with the game pre-loading.
 
 
 ## Testing
-
-> 
+Run tests with the following command:
+```
+npm test
+```
 
 
 ## Usage
