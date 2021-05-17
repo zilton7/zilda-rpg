@@ -8,13 +8,12 @@ class NameInputScene extends Phaser.Scene {
     super("HighScoreScene");
   }
 
-  preload() {
-    if (getPlayerScore() > 0) {
-      submitHighScore(getPlayerName(), getPlayerScore());
-    }
-  }
+  preload() {}
 
   create() {
+    if (getPlayerScore() > 0) {
+      submitHighScore("Zebras", 1000);
+    }
     // Display Player's Score
     this.message = this.add
       .text(400, 50, `${getPlayerName()}'s score: ${getPlayerScore()}`, {

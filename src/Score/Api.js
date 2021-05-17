@@ -30,7 +30,7 @@ const submitHighScore = async (name, score) => {
   return answer;
 };
 
-const getHighScores = async (gameId = gameId) => {
+const getHighScores = async () => {
   const url = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`;
   const response = await fetch(url, {
     method: "GET",
