@@ -33,26 +33,26 @@ reach particular places you will engage into the battle with dragons.
 
 ![screenshot](./misc/battle.png)
 
-When in battle, user arrow keys to choose your characters attack and
+When in battle, use arrow keys to choose and space bar to confirm your characters attack and
 try to defeat the enemies.
 
 ## About The Game
 
-The Legendary Zilda is a turn-based role play game (RPG). The objective of this game is to remind people of old classical RPG games from the 90's and 00's. Game consists two different playing scenes Battle and World. To make it competitive the player game points are recorded and stored online, everybody can get to the top of the rankings if they put enough effort and time.
+The Legendary Zilda is a turn-based role play game (RPG). The objective of this game is to remind people of old classical RPG games from the 90's and 00's. Game consists of two different playing scenes Battle and World. To make it competitive player's game points are recorded and stored online, everybody can get to the top of the rankings if they put enough effort and time.
 
 Here's how I designed this game:
 
-In the first day, I was searching online for classic RPG games, and I had a lot of ideas for in my mind. I decided that creating a game where there are two game characters on one side fighting enemies on the other side is the best way to re-create that classic RPG vibe.
+In the first day, I was researching online about classical RPG games, and I had a lot of ideas in my mind. I decided that creating a game where there are two game characters on one side fighting enemies on the other side is the best way to re-create that classic RPG vibe.
 I decided to name my game 'Legendary Zilda'. It is a homage to probably the most famous RPG game 'The Legend of Zelda', blended with my name 'Zil'.
 To make it more simple, I only used CC0 licensed sprites, images and sounds from openGame Art
 
 To navigate in the world scene, player uses keyboard arrows up, down, left, right.
 
-In battle scene, use keyboard arrows up, down, left and space bar to choose enemy to attack. Inside the battle scene player can see his characterss and enemies' health bars at all times.
+In battle scene, use keyboard arrows up, down, left and space bar to attack the choose enemy. Inside the battle scene player can see his characters' and enemies' health bars at all times.
 
 Also there are player's score available to see in the top bar in both of the scenes, when player want to quit, he can use the button 'Exit' in the top right of the bar, after clicking said button player is taken to High Score scene, where all top players and their scores are listed.
 
-Player has 2 main characters, warrior and mage, with whom battled are fought
+Player has 2 main characters, warrior and mage, with whom battles are fought
 
 Enemies are 2 dragoons red and blue.
 ## Setup
