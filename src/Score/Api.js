@@ -1,8 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies, import/no-unresolved */
 
-const fetch = require('node-fetch');
-
-const gameId = 'U7j7o8MocFkvuE4OwhWl';
+const fetch = require("node-fetch");
 
 const sortData = (object) => {
   const arr = [];
@@ -13,37 +11,50 @@ const sortData = (object) => {
   return sortedArr;
 };
 
-const submitHighScore = async (name, score) => {
+const submitHighScore = async (
+  gameId = "U7j7o8MocFkvuE4OwhWl",
+  name,
+  score
+) => {
   const submit = {
     user: name,
     score,
   };
   const post = JSON.stringify(submit);
   const url = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`;
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: post,
-  });
-  const answer = await response.json();
-  return answer;
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: post,
+    });
+    const answer = await response.json();
+    return answer;
+  } catch (error) {
+    return error;
+  }
 };
 
-const getHighScores = async () => {
+const getHighScores = async (gameId = "U7j7o8MocFkvuE4OwhWl") => {
   const url = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`;
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-  });
-  const answer = await response.json();
-  const sortedData = sortData(answer.result);
-  return sortedData;
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+
+    const answer = await response.json();
+    const sortedData = sortData(answer.result);
+    return sortedData;
+  } catch (error) {
+    return error;
+  }
 };
 
 export { submitHighScore, getHighScores };
