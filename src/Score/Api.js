@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies, import/no-unresolved */
 
-const fetch = require("node-fetch");
+const fetch = require('node-fetch');
 
 const sortData = (object) => {
   const arr = [];
@@ -12,9 +12,9 @@ const sortData = (object) => {
 };
 
 const submitHighScore = async (
-  gameId = "U7j7o8MocFkvuE4OwhWl",
+  gameId = 'U7j7o8MocFkvuE4OwhWl',
   name,
-  score
+  score,
 ) => {
   const submit = {
     user: name,
@@ -24,10 +24,10 @@ const submitHighScore = async (
   const url = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`;
   try {
     const response = await fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
       body: post,
     });
@@ -38,14 +38,14 @@ const submitHighScore = async (
   }
 };
 
-const getHighScores = async (gameId = "U7j7o8MocFkvuE4OwhWl") => {
+const getHighScores = async (gameId = 'U7j7o8MocFkvuE4OwhWl') => {
   const url = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`;
   try {
     const response = await fetch(url, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
     });
 
