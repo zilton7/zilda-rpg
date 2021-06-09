@@ -1,5 +1,5 @@
 # Zilda - RPG Game
-In this project, I have built a RPG game using Phaser 3 Framework. This project's main goal was to learn completely new technology and implement a fully working game in 5 work days, using best JavaScript practices.
+An RPG game built using the Phaser 3 Framework. This fully working game was built in less than five days using best JavaScript practices..
 
 ![screenshot](./misc/preloader.png)
 
